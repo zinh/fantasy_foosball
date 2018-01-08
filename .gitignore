@@ -18,5 +18,5 @@
 
 .byebug_history
 .rbenv-gemsets
-.swp
-.swo
+*.swp
+*.swo
