@@ -11,4 +11,9 @@
 class Team < ApplicationRecord
   has_many :user_teams
   has_many :users, through: :user_teams
+
+  has_many :team_matches
+  has_many :matches, through: :team_matches
+
+  validates_presence_of :name
 end
