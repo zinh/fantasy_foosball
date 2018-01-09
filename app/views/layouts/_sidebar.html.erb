@@ -3,23 +3,27 @@
     <ul class="sidebar-menu tree" data-widget="tree">
       <li class="<%= params[:controller] == 'teams' && params[:action] == 'top' ? 'active' : '' -%>">
         <%= link_to root_path do %>
+          <i class="fa fa-sort-amount-desc"></i>
           <span>Top teams</span>
         <% end %>
       </li>
       <li class="<%= params[:controller] == 'users' ? 'active' : '' -%>">
         <%= link_to users_path do %>
+          <i class="fa fa-user"></i>
           <span>User Management</span>
         <% end %>
       </li>
 
       <li class="<%= params[:controller] == 'teams' && params[:action] != 'top'? 'active' : '' -%>">
         <%= link_to teams_path do %>
+          <i class="fa fa-users"></i>
           <span>Team Management</span>
         <% end %>
       </li>
 
       <li class="<%= ['matches', 'games'].include?(params[:controller]) ? 'active' : '' -%>">
         <%= link_to matches_path do %>
+          <i class="fa fa-trophy"></i>
           <span>Match Management</span>
         <% end %>
       </li>
