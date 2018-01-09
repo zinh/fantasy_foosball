@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: fantasy_foosball_production
-  username: fantasy_foosball
-  password: <%= ENV['FANTASY_FOOSBALL_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
