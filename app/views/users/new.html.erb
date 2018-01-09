@@ -1,6 +1,5 @@
-<section class="content-header">
-  <h1>New User</h1>
-</section>
-<section class="content container-fluid">
-  <%= render partial: 'form', locals: { user: @user } -%>
-</section>
+<% content_for :page_header do %>
+  New user
+<% end %>
+
+<%= render partial: 'form', locals: { user: @user } -%>

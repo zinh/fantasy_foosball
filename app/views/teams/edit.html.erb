@@ -1,6 +1,5 @@
-<section class="content-header">
-  <h1>Team Edit</h1>
-</section>
-<section class="content container-fluid">
-  <%= render partial: 'form', locals: { team: @team }-%>
-</section>
+<% content_for :page_header do %>
+  Team edit
+<% end %>
+
+<%= render partial: 'form', locals: { team: @team }-%>

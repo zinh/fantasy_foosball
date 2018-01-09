@@ -1,7 +1,8 @@
-<h1>Team: <%= @team.name -%></h1>
+<% content_for :page_header do %>
+  Team: <%= @team.name -%>
+<% end %>
 
 <h2>Members</h2>
-
 <% @team.users.each_with_index do |member, index| %>
   <%= index + 1 %>.
   <%= member.full_name %>
