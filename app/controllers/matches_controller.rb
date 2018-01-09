@@ -20,16 +20,11 @@ class MatchesController < ApplicationController
       redirect_to match_path(@match)
     else
       flash.now[:danger] = "Error create match"
+      if @match.team_matches.size < Match::MAX_TEAM_COUNT
+        (Match::MAX_TEAM_COUNT - @match.team_matches.size).times{ @match.team_matches << TeamMatch.new }
+      end
       render :new
     end
-  end
-
-  def edit
-    get_match
-  end
-
-  def update
-    get_match
   end
 
   private

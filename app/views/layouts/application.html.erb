@@ -31,8 +31,8 @@
         <section class="content-header">
           <h1><%= yield(:page_header) -%></h1>
         </section>
-        <%= render partial: 'layouts/notice'-%>
         <section class="content container-fluid">
+          <%= render partial: 'layouts/notice'-%>
           <%= yield %>
         </section>
       </div>

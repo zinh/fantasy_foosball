@@ -10,6 +10,7 @@
 #
 
 class Match < ApplicationRecord
+  MAX_TEAM_COUNT = 2
   has_many :games
   has_many :team_matches
   has_many :teams, through: :team_matches
@@ -19,7 +20,7 @@ class Match < ApplicationRecord
   validate :team_count_validator
 
   def team_count_validator
-    errors.add(:base, "Please select two teams") if team_matches.size != 2
+    errors.add(:base, "Please select #{Match::MAX_TEAM_COUNT} teams") if team_matches.size != Match::MAX_TEAM_COUNT
   end
 
   def winner_name

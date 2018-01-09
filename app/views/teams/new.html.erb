@@ -2,4 +2,5 @@
   New team
 <% end %>
 
+<%= render partial: 'shared/errors', locals: { model: @team }-%>
 <%= render partial: 'form', locals: { team: @team }-%>
