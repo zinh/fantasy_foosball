@@ -1,0 +1,5 @@
+Team name: <%= team.name %> <br/>
+Members:
+<% team.users.each do |member| %>
+  <%= member.full_name -%> <br/>
+<% end %>

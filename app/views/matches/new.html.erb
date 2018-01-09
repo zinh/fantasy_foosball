@@ -1,0 +1,9 @@
+<h1>New match</h1>
+
+<%= form_for(@match) do |f| %>
+  <%= f.fields_for :team_matches do |team_match_fields| %>
+    <%= team_match_fields.label :team_id %>
+    <%= team_match_fields.select :team_id, options_from_collection_for_select(Team.all, :id, :name), { include_blank: true } %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
