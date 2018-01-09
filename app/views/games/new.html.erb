@@ -1,0 +1,8 @@
+<h1>New game <%= @match.teams.map(&:name).join(' vs ') -%></h1>
+<%= form_for([@match, @game]) do |f| %>
+  <%= f.label :score -%>
+  <%= f.text_field :score -%>
+  <%= f.label :winning_team_id -%>
+  <%= f.select :winning_team_id, options_from_collection_for_select(@match.teams, :id, :name) %>
+  <%= f.submit %>
+<% end %>

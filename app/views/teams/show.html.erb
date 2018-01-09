@@ -1,0 +1,11 @@
+<h1>Team: <%= @team.name -%></h1>
+
+<h2>Members</h2>
+
+<% @team.users.each_with_index do |member, index| %>
+  <%= index + 1 %>.
+  <%= member.full_name %>
+  <br/>
+<% end %>
+
+<%= link_to "Edit", edit_team_path(@team) -%>

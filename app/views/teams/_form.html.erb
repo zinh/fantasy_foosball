@@ -1,6 +1,14 @@
 <%= form_for team do |f| -%>
   <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
   <%= f.fields_for :user_teams do |user_team_fields| %>
-    <%= user_team_fields.select :user_id, options_from_collection_for_select(User.all, :id, :full_name)%>
+    <%= user_team_fields.hidden_field :id %>
+    <%= user_team_fields.label :user_id %>
+    <%= user_team_fields.select :user_id, 
+      options_from_collection_for_select(User.all, :id, :full_name, user_team_fields.object.user_id), 
+      { include_blank: true } %>
+    <br/>
   <% end %>
+  <%= f.submit %>
 <% end %>
