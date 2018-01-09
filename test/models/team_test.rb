@@ -11,7 +11,13 @@
 require 'test_helper'
 
 class TeamTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
+  test "should require name" do
+    team = Team.new
+    assert_not team.valid?, "should has name presence validation"
+  end
+
+  # test "should at least has 1 member" do
+  #   team = Team.new(name: teams(:without_member).name)
+  #   assert_not team.valid?, "team should has at least one member validation"
   # end
 end

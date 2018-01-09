@@ -16,4 +16,6 @@ class Team < ApplicationRecord
   has_many :matches, through: :team_matches
 
   validates_presence_of :name
+
+  # validate :member_count_validator
 end
