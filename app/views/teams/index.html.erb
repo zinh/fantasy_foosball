@@ -1,3 +1,17 @@
-<h1>Team list</h1>
-
-<%= render partial: 'team', collection: @teams %>
+<section class="content-header">
+  <h1>Team List</h1>
+</section>
+<section class="content container-fluid">
+  <%= link_to "New team", new_team_path, class: "btn btn-lg btn-success" -%>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Members</th>
+      <th>Win</th>
+      <th>Lose</th>
+      <th>Edit</th>
+    </tr>
+    <%= render partial: 'team', collection: @teams %>
+  </table>
+</section>

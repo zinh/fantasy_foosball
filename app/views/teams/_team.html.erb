@@ -1,5 +1,12 @@
-Team name: <%= team.name %> <br/>
-Members:
-<% team.users.each do |member| %>
-  <%= member.full_name -%> <br/>
-<% end %>
+<tr>
+  <td><%= team.id %></td>
+  <td><%= team.name %></td>
+  <td>
+    <% team.users.each do |member| %>
+      <%= member.full_name -%>
+    <% end %>
+  </td>
+  <td>0</td>
+  <td>0</td>
+  <td><%= link_to 'Edit', edit_team_path(team) -%></td>
+</tr>
