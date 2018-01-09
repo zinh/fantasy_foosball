@@ -2,6 +2,7 @@
   <%= @match.teams.map(&:name).join(' vs ') -%>
 <% end %>
 
+<%= render partial: 'shared/errors', locals: { model: @game }-%>
 <%= form_for([@match, @game], html: { class: 'form-horizontal' }) do |f| %>
   <div class="form-group">
     <%= f.label :score, class: 'col-sm-2 control-label' -%>
