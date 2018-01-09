@@ -1,3 +1,5 @@
-<h1>User new</h1>
+<% content_for :page_header do %>
+  New user
+<% end %>
 
 <%= render partial: 'form', locals: { user: @user } -%>

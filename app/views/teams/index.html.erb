@@ -1,3 +1,16 @@
-<h1>Team list</h1>
+<% content_for :page_header do %>
+  Team list
+<% end %>
 
-<%= render partial: 'team', collection: @teams %>
+<%= link_to "New team", new_team_path, class: "btn btn-lg btn-success" -%>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Members</th>
+    <th>Win</th>
+    <th>Lose</th>
+    <th>Edit</th>
+  </tr>
+  <%= render partial: 'team', collection: @teams %>
+</table>

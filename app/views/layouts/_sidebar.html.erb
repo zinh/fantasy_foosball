@@ -1,0 +1,27 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu tree" data-widget="tree">
+      <li>
+        <%= link_to '/top' do %>
+          <span>Top teams</span>
+        <% end %>
+      </li>
+      <li class="<%= params[:controller] == 'users' ? 'active' : '' -%>">
+        <%= link_to users_path do %>
+          <span>User Management</span>
+        <% end %>
+      </li>
+
+      <li class="<%= params[:controller] == 'teams' ? 'active' : '' -%>">
+        <%= link_to teams_path do %>
+          <span>Team Management</span>
+        <% end %>
+      </li>
+
+      <li class="<%= ['matches', 'games'].include?(params[:controller]) ? 'active' : '' -%>">
+        <%= link_to matches_path do %>
+          <span>Match Management</span>
+        <% end %>
+      </li>
+  </section>
+</aside>

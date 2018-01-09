@@ -13,10 +13,10 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.match_id = @match.id
     if @game.save
-      flash.notice = "Game created"
+      flash[:success] = "Game created"
       redirect_to match_path(@match)
     else
-      flash.now[:message] = "Error create game"
+      flash.now[:danger] = "Error create game"
       render :new
     end
   end
@@ -31,10 +31,10 @@ class GamesController < ApplicationController
     get_game
     get_match
     if @game.update_attributes(game_params)
-      flash.notice = "Game updated"
+      flash[:success] = "Game updated"
       redirect_to match_path(@match)
     else
-      flash.now[:message] = "Error update game"
+      flash.now[:danger] = "Error update game"
       render :new
     end
   end

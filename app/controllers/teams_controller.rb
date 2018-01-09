@@ -1,4 +1,8 @@
 class TeamsController < ApplicationController
+  def top
+    @teams = Team.all
+  end
+
   def index
     @teams = Team.all
   end
@@ -16,14 +20,14 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      flash.notice = "Team #{@team.name} created"
+      flash[:success] = "Team #{@team.name} created"
       redirect_to team_path(@team)
     else
       if @team.user_teams.size.zero?
         @team.user_teams << UserTeam.new
         @team.user_teams << UserTeam.new
       end
-      flash.now[:message] = "Error create team"
+      flash.now[:danger] = "Error create team"
       render :new
     end
   end
@@ -35,10 +39,10 @@ class TeamsController < ApplicationController
   def update
     get_team
     if @team.update_attributes(team_params)
-      flash.notice = "Team #{@team.name} updated"
+      flash[:success] = "Team #{@team.name} updated"
       redirect_to team_path(@team)
     else
-      flash.now[:message] = "Error update team"
+      flash.now[:danger] = "Error update team"
       render :edit
     end
   end

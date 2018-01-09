@@ -16,10 +16,10 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if @match.save
-      flash.notice = "Match created successfully"
+      flash[:success] = "Match created successfully"
       redirect_to match_path(@match)
     else
-      flash.now[:message] = "Error create match"
+      flash.now[:danger] = "Error create match"
       render :new
     end
   end

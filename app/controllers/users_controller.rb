@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "User created"
+      flash[:success] = "User created"
       redirect_to @user
     else
-      flash.new[:message] = "Error create user"
+      flash.now[:danger] = "Error create user"
       render :new
     end
   end
@@ -29,10 +29,10 @@ class UsersController < ApplicationController
   def update
     get_user
     if @user.update_attributes(user_params)
-      flash[:notice] = "User updated"
+      flash[:success] = "User updated"
       redirect_to @user
     else
-      flash.now[:message] = "User update error"
+      flash.now[:danger] = "User update error"
       render :edit
     end
   end

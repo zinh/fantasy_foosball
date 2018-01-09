@@ -1,2 +1,14 @@
-<h1>User list</h1>
-<%= render partial: 'user', collection: @users -%>
+<% content_for :page_header do %>
+  Matches list
+<% end %>
+
+<%= link_to "New user", new_user_path, class: "btn btn-lg btn-success" -%>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>#</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Edit</th>
+  </tr>
+  <%= render partial: 'user', collection: @users -%>
+</table>
