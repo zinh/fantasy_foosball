@@ -1,0 +1,5 @@
+<% if model.errors.present? %>
+  <div class="alert alert-warning" role="alert">
+    <%= simple_format model.errors.full_messages.join("\n") %>
+  </div>
+<% end %>

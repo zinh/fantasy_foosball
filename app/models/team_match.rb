@@ -10,7 +10,7 @@
 #
 
 class TeamMatch < ApplicationRecord
-  belongs_to :team
+  belongs_to :team, counter_cache: :matches_counter
   belongs_to :match
   validates_presence_of :team_id
 end

@@ -2,11 +2,8 @@
   <td><%= team.id %></td>
   <td><%= team.name %></td>
   <td>
-    <% team.users.each do |member| %>
-      <%= member.full_name -%>
-    <% end %>
+    <%= team.users.map(&:full_name).join(" | ") %>
   </td>
-  <td>0</td>
-  <td>0</td>
+  <td> <%= @stat[team.id] || 0 -%> / <%= team.matches_counter -%></td>
   <td><%= link_to 'Edit', edit_team_path(team) -%></td>
 </tr>

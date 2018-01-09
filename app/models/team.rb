@@ -2,13 +2,15 @@
 #
 # Table name: teams
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  matches_counter :integer          default(0)
 #
 
 class Team < ApplicationRecord
+  MAX_MEMBER = 2
   has_many :user_teams, dependent: :destroy
   has_many :users, through: :user_teams
 

@@ -1,10 +1,15 @@
 class TeamsController < ApplicationController
   def top
+    @stat = Match.winning_stat
     @teams = Team.all
+      .sort_by{ |team| team.matches_counter.nonzero? ? (@stat[team.id] || 0) / team.matches_counter : 0 }
+      .reverse
+    render :index
   end
 
   def index
     @teams = Team.all
+    @stat = Match.winning_stat
   end
 
   def show
@@ -23,9 +28,8 @@ class TeamsController < ApplicationController
       flash[:success] = "Team #{@team.name} created"
       redirect_to team_path(@team)
     else
-      if @team.user_teams.size.zero?
-        @team.user_teams << UserTeam.new
-        @team.user_teams << UserTeam.new
+      if @team.user_teams.size < Team::MAX_MEMBER
+        (Team::MAX_MEMBER - @team.user_teams.size).times{ @team.user_teams << UserTeam.new }
       end
       flash.now[:danger] = "Error create team"
       render :new
@@ -34,6 +38,9 @@ class TeamsController < ApplicationController
 
   def edit
     get_team
+    if @team.user_teams.size < Team::MAX_MEMBER
+      (Team::MAX_MEMBER - @team.user_teams.size).times{ @team.user_teams << UserTeam.new }
+    end
   end
 
   def update

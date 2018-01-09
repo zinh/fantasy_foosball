@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'teams#top'
   resources :users, except: [:destroy]
   resources :teams, except: [:destroy]
   resources :matches, except: [:destroy, :edit, :update] do

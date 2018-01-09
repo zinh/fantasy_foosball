@@ -1,14 +1,21 @@
-<% @match.teams.each do |team| %>
-  <%= team.name -%></br/>
+<% content_for :page_header do %>
+  <%= @match.teams.map(&:name).join(' vs ') -%>
 <% end %>
-<% @match.games.each_with_index do |game, index| %>
-  Game <%= index + 1 -%>
-  <br/>
-  Score <%= game.score %>
-  <br/>
-  Winning team: <%= game.winning_team.name %>
-  <br/>
-  <%= link_to "Edit", edit_match_game_path(@match, game) %>
-<% end %>
-<br/>
-<%= link_to "New Game", new_match_game_path(@match) %>
+
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>#Game</th>
+    <th>Score</th>
+    <th>Winner</th>
+    <th>Edit</th>
+  </tr>
+  <% @match.games.each_with_index do |game, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= game.score %></td>
+      <td><%= game.winning_team.name %></td>
+      <td> <%= link_to "Edit", edit_match_game_path(@match, game) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New Game", new_match_game_path(@match), class: "btn btn-primary" %>

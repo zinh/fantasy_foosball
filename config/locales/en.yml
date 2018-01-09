@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        game:
+          attributes:
+            score:
+              inclusion: "must between 0 and 10"

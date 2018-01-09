@@ -3,6 +3,7 @@
   <% match.teams.each do |team| %>
     <td><%= team.name -%></td>
   <% end %>
-  <td>0</td>
+  <td><%= link_to match.games_count, match_path(match) -%></td>
+  <td><%= match.winner_name -%></td>
   <td><%= link_to 'New game', new_match_game_path(match) %></td>
 </tr>
