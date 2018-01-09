@@ -1,8 +1,8 @@
 <aside class="main-sidebar">
   <section class="sidebar">
     <ul class="sidebar-menu tree" data-widget="tree">
-      <li>
-        <%= link_to '/top' do %>
+      <li class="<%= params[:controller] == 'teams' && params[:action] == 'top' ? 'active' : '' -%>">
+        <%= link_to root_path do %>
           <span>Top teams</span>
         <% end %>
       </li>
@@ -12,7 +12,7 @@
         <% end %>
       </li>
 
-      <li class="<%= params[:controller] == 'teams' ? 'active' : '' -%>">
+      <li class="<%= params[:controller] == 'teams' && params[:action] != 'top'? 'active' : '' -%>">
         <%= link_to teams_path do %>
           <span>Team Management</span>
         <% end %>

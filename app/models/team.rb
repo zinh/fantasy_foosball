@@ -9,6 +9,7 @@
 #
 
 class Team < ApplicationRecord
+  MAX_MEMBER = 2
   has_many :user_teams, dependent: :destroy
   has_many :users, through: :user_teams
 
